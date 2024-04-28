@@ -5,18 +5,18 @@ Subject: [PATCH] Test changes
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index ff9e7b4c4354d4475559213cdaa01728601859fa..5304f5de52a76eee876ac8f0b2834a93b28d57aa 100644
+index 9ca8ddea1d53076e0f23c6e3bf3e3eca5cceb393..2f73e709dcde063ec7ca2181f2f2d5670fd479f5 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
-@@ -23,6 +23,7 @@ dependencies {
+@@ -22,6 +22,7 @@ dependencies {
      testImplementation("org.hamcrest:hamcrest:2.2")
      testImplementation("org.mockito:mockito-core:5.11.0")
      testImplementation("org.ow2.asm:asm-tree:9.7")
 +    testImplementation("org.junit-pioneer:junit-pioneer:2.2.0") // Paper - CartesianTest
  }
  
- val craftbukkitPackageVersion = "1_20_R3" // Paper
-@@ -53,6 +54,12 @@ tasks.jar {
+ paperweight {
+@@ -55,6 +56,12 @@ tasks.jar {
      }
  }
  
@@ -28,7 +28,7 @@ index ff9e7b4c4354d4475559213cdaa01728601859fa..5304f5de52a76eee876ac8f0b2834a93
 +
  publishing {
      publications.create<MavenPublication>("maven") {
-         artifact(tasks.shadowJar)
+     }
 diff --git a/src/test/java/io/papermc/paper/registry/RegistryKeyTest.java b/src/test/java/io/papermc/paper/registry/RegistryKeyTest.java
 new file mode 100644
 index 0000000000000000000000000000000000000000..e070aa1bb69859224493d958621389ee757f8752
@@ -338,10 +338,10 @@ index 0000000000000000000000000000000000000000..6cbf11c898439834cffb99ef84e5df14
 +    String[] value() default {};
 +}
 diff --git a/src/test/java/org/bukkit/support/DummyServer.java b/src/test/java/org/bukkit/support/DummyServer.java
-index b19d4f7d1fcb604b448a5084f6bfe56d47ab12b3..f3017525b0c2397fdc7ce0778add2e7b38e9e2ba 100644
+index ee0cff84379bc0539b2c611a4904aff9f5843814..02a8e6b45bf304b6e0f88043a25188aa16b3d6bf 100644
 --- a/src/test/java/org/bukkit/support/DummyServer.java
 +++ b/src/test/java/org/bukkit/support/DummyServer.java
-@@ -48,6 +48,15 @@ public final class DummyServer {
+@@ -50,6 +50,15 @@ public final class DummyServer {
                  return registers.computeIfAbsent(aClass, key -> CraftRegistry.createRegistry(aClass, AbstractTestingBase.REGISTRY_CUSTOM));
              });
  
